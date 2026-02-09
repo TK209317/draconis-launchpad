@@ -1,0 +1,533 @@
+/* 我的合约页面样式 */
+.my-contracts {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 筛选器样式 */
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 20px;
+  background: rgba(11, 11, 35, 0.8);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: none;
+  box-shadow: 0px 0px 30px 0px rgba(26, 54, 109, 0.5), 0px 0px 50px 0px #3e43ae;
+  flex-wrap: wrap;
+  transition: all 0.3s ease;
+}
+
+.filters button {
+  padding: 12px 20px;
+  border: 1px solid rgba(225, 215, 180, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  color: #e1d7b4;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.filters button:hover:not(.active) {
+  background: rgba(225, 215, 180, 0.1);
+  color: #e1d7b4;
+  border-color: rgba(225, 215, 180, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(225, 215, 180, 0.3);
+}
+
+.filters button.active {
+  background: linear-gradient(135deg, #e1d7b4, #7b7662);
+  color: #0b0b23;
+  border-color: transparent;
+  box-shadow: 0 0 20px rgba(225, 215, 180, 0.5);
+  font-weight: 600;
+}
+
+/* 合约列表样式 */
+.contracts-list {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+/* 合约卡片样式 */
+.contract-card {
+  background: rgba(11, 11, 35, 0.8);
+  border-radius: 15px;
+  padding: 24px;
+  border: none;
+  box-shadow: 0px 0px 30px 0px rgba(26, 54, 109, 0.5), 0px 0px 50px 0px #3e43ae;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contract-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #e1d7b4, #7b7662);
+}
+
+.contract-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 0px 40px 0px rgba(26, 54, 109, 0.7), 0px 0px 60px 0px #3e43ae;
+  background: rgba(11, 11, 35, 0.9);
+}
+
+.contract-card h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #e1d7b4, #7b7662);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  border-bottom: 2px solid rgba(225, 215, 180, 0.2);
+  padding-bottom: 8px;
+}
+
+/* 合约详情样式 */
+.contract-details {
+  margin-bottom: 20px;
+}
+
+.contract-details p {
+  margin: 8px 0;
+  color: #cfcfcf;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.contract-details strong {
+  color: #e1d7b4;
+  font-weight: 600;
+}
+
+/* 地址显示样式 */
+.address-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 13px;
+  background: rgba(225, 215, 180, 0.1);
+  color: #e1d7b4;
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-left: 8px;
+}
+
+.copy-button {
+  background: rgba(225, 215, 180, 0.2);
+  border: 1px solid rgba(225, 215, 180, 0.3);
+  color: #e1d7b4;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.2s;
+}
+
+.copy-button:hover {
+  background: rgba(225, 215, 180, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(225, 215, 180, 0.3);
+}
+
+/* 合约操作样式 */
+.contract-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.contract-actions a,
+.contract-actions button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contract-actions a {
+  background: rgba(34, 139, 34, 0.1);
+  color: #228b22;
+  border: 1px solid rgba(34, 139, 34, 0.3);
+}
+
+.contract-actions a:hover {
+  background: rgba(34, 139, 34, 0.2);
+  transform: translateY(-2px);
+}
+
+.mint-button {
+  background: rgba(255, 140, 0, 0.1);
+  color: #ff8c00;
+  border: 1px solid rgba(255, 140, 0, 0.3);
+}
+
+.mint-button:hover {
+  background: rgba(255, 140, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* 无合约状态 */
+.no-contracts {
+  text-align: center;
+  padding: 60px 20px;
+  background: rgba(11, 11, 35, 0.6);
+  border-radius: 15px;
+  border: 2px dashed rgba(225, 215, 180, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 0px 30px 0px rgba(26, 54, 109, 0.3);
+}
+
+.no-contracts p {
+  color: #cfcfcf;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .my-contracts {
+    padding: 15px;
+  }
+  
+  .filters {
+    padding: 15px;
+    gap: 8px;
+  }
+  
+  .filters button {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+  
+  .contracts-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .contract-card {
+    padding: 20px;
+  }
+  
+  .contract-actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .contract-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .contract-actions a,
+  .contract-actions button {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  .address-display {
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+  
+  .copy-button {
+    padding: 2px 4px;
+    font-size: 10px;
+  }
+}
+
+/* 分页导航样式 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  padding: 20px;
+  background: rgba(11, 11, 35, 0.8);
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0px 0px 30px 0px rgba(26, 54, 109, 0.5), 0px 0px 50px 0px #3e43ae;
+  backdrop-filter: blur(10px);
+}
+
+.pagination-btn {
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(225, 215, 180, 0.3);
+  color: #e1d7b4;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: rgba(225, 215, 180, 0.1);
+  color: #e1d7b4;
+  border-color: rgba(225, 215, 180, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 0 15px rgba(225, 215, 180, 0.3);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pagination-numbers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 12px;
+}
+
+.pagination-number {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(225, 215, 180, 0.3);
+  color: #e1d7b4;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.pagination-number:hover:not(.active) {
+  background: rgba(225, 215, 180, 0.1);
+  color: #e1d7b4;
+  border-color: rgba(225, 215, 180, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 0 15px rgba(225, 215, 180, 0.3);
+}
+
+.pagination-number.active {
+  background: linear-gradient(135deg, #e1d7b4, #7b7662);
+  color: #0b0b23;
+  border-color: transparent;
+  box-shadow: 0 0 20px rgba(225, 215, 180, 0.5);
+  font-weight: 600;
+}
+
+.pagination-ellipsis {
+  padding: 10px 4px;
+  color: #7b7662;
+  font-size: 14px;
+  user-select: none;
+}
+
+/* 响应式分页设计 */
+@media (max-width: 768px) {
+  .pagination {
+    padding: 16px;
+    gap: 6px;
+  }
+  
+  .pagination-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  .pagination-number {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+  
+  .pagination-numbers {
+    margin: 0 8px;
+    gap: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    padding: 12px;
+    gap: 4px;
+  }
+  
+  .pagination-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  .pagination-number {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+  
+  .pagination-numbers {
+    margin: 0 6px;
+    gap: 2px;
+  }
+  
+  /* 在小屏幕上隐藏一些页码按钮 */
+  .pagination-numbers {
+    max-width: 200px;
+    overflow: hidden;
+  }
+} 
+
+.verify-button.success {
+  background-color: #86efac;
+  color: #166534;
+  border-color: #86efac;
+  cursor: not-allowed;
+}
+
+.verify-button.success:hover {
+  background-color: #86efac;
+  border-color: #86efac;
+}
+
+.verify-result {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-left: 12px;
+  line-height: 1;
+  height: 32px;
+  box-sizing: border-box;
+  border: none;
+  white-space: nowrap;
+}
+
+.verify-result.success {
+  background-color: #10b981;
+  color: white;
+}
+
+.verify-result.fail {
+  background-color: #ef4444;
+  color: white;
+}
+
+.verify-result.timeout {
+  background-color: #f59e0b;
+  color: white;
+}
+
+/* 验证结果弹窗样式 */
+.verify-modal {
+  border: none;
+  border-radius: 12px;
+  padding: 0;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.verify-modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.verify-modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.verify-modal-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 auto 20px;
+}
+
+.verify-modal-icon.success {
+  background-color: #10b981;
+  color: white;
+}
+
+.verify-modal-icon.error {
+  background-color: #ef4444;
+  color: white;
+}
+
+.verify-modal-icon.warning {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.verify-modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #1f2937;
+}
+
+.verify-modal-message {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+.verify-modal-close {
+  background-color: #f3f4f6;
+  color: #374151;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.verify-modal-close:hover {
+  background-color: #e5e7eb;
+} 

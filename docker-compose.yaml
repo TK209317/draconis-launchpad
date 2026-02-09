@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  launchpad:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      platforms:
+        - linux/amd64
+      args:
+        # Public environment variables
+        - NEXT_PUBLIC_PROJECT_ID=${NEXT_PUBLIC_PROJECT_ID}
+        - NEXT_PUBLIC_DRACONIS_RPC_URL=${NEXT_PUBLIC_DRACONIS_RPC_URL}
+        - NEXT_PUBLIC_DRACONIS_EXPLORER_URL=${NEXT_PUBLIC_DRACONIS_EXPLORER_URL}
+        - NEXT_PUBLIC_BLOCKSCOUT_API=${NEXT_PUBLIC_BLOCKSCOUT_API}
+        - NEXT_PUBLIC_DRACONIS_NAME=${NEXT_PUBLIC_DRACONIS_NAME}
+        - NEXT_PUBLIC_DRACONIS_NETWORK=${NEXT_PUBLIC_DRACONIS_NETWORK}
+        - NEXT_PUBLIC_DRACONIS_CHAIN_ID=${NEXT_PUBLIC_DRACONIS_CHAIN_ID}
+        # Server-side environment variables
+        - DATABASE_URL=${DATABASE_URL}
+        - JWT_SECRET=${JWT_SECRET}
+        - STORAGE_TYPE=${STORAGE_TYPE}
+        - S3_ENDPOINT=${S3_ENDPOINT}
+        - S3_IMAGE_BUCKET=${S3_IMAGE_BUCKET}
+        - S3_METADATA_BUCKET=${S3_METADATA_BUCKET}
+        - S3_API_KEY=${S3_API_KEY}
+    image: sirily11/draconis-launchpad:${TAG:-latest}
+    container_name: draconis-launchpad
+    ports:
+      - "80:80"
+    restart: unless-stopped

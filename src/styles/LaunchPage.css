@@ -1,0 +1,33 @@
+/* Animation utilities */
+@keyframes pulse-delay {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.delay-150 {
+  animation-delay: 150ms;
+}
+
+/* Custom scrollbar for dark theme */
+.launch-page ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.launch-page ::-webkit-scrollbar-track {
+  background: rgba(11, 11, 35, 0.3);
+  border-radius: 4px;
+}
+
+.launch-page ::-webkit-scrollbar-thumb {
+  background: rgba(131, 182, 230, 0.3);
+  border-radius: 4px;
+}
+
+.launch-page ::-webkit-scrollbar-thumb:hover {
+  background: rgba(131, 182, 230, 0.5);
+}

@@ -1,0 +1,622 @@
+.nft-minter-modal {
+  border: none;
+  border-radius: 16px;
+  padding: 0;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.25);
+  overflow: hidden;
+}
+
+.nft-minter-modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+.nft-minter-content-wrapper {
+  background: var(--theme-card-bg, #000);
+  color: var(--theme-text-primary, #f1f1f1);
+  padding: 30px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nft-minter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(110, 142, 251, 0.2);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nft-minter-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--theme-text-primary, #f1f1f1);
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+.close-button {
+  background: rgba(255, 59, 48, 0.8);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+}
+
+.close-button:hover {
+  background: rgba(255, 59, 48, 1);
+  transform: scale(1.1) rotate(90deg);
+}
+
+.nft-minter-content {
+  margin-top: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--theme-text-secondary, #444);
+  font-size: 0.95rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid rgba(110, 142, 251, 0.2);
+  border-radius: 8px;
+  font-size: 14px;
+  background: var(--theme-input-bg, rgba(255, 255, 255, 0.8));
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+  color: var(--theme-input-text, #333);
+}
+
+.form-group input:focus {
+  border-color: #6e8efb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(110, 142, 251, 0.2);
+  background: var(--theme-input-bg, #fff);
+}
+
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid rgba(110, 142, 251, 0.2);
+  border-radius: 8px;
+  font-size: 14px;
+  background: var(--theme-input-bg, rgba(255, 255, 255, 0.8));
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+  color: var(--theme-input-text, #333);
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-group textarea:focus {
+  border-color: #6e8efb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(110, 142, 251, 0.2);
+  background: var(--theme-input-bg, #fff);
+}
+
+.form-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.form-actions button {
+  flex: 1;
+  min-width: 120px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4863f7;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.form-actions button:hover {
+  background-color: #3850e0;
+}
+
+.form-actions button:disabled {
+  background-color: #a9b1d4;
+  cursor: not-allowed;
+}
+
+.form-actions .secondary-button {
+  background-color: #6c757d;
+}
+
+.form-actions .secondary-button:hover {
+  background-color: #5a6268;
+}
+
+.form-actions .secondary-button:disabled {
+  background-color: #b3b8bd;
+}
+
+.error-message {
+  background: linear-gradient(135deg, rgba(254, 226, 226, 0.8), rgba(254, 202, 202, 0.8));
+  color: #991b1b;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.15);
+  backdrop-filter: blur(5px);
+}
+
+.success-message {
+  background: linear-gradient(135deg, rgba(209, 250, 229, 0.8), rgba(167, 243, 208, 0.8));
+  color: #065f46;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
+  backdrop-filter: blur(5px);
+}
+
+.success-message a {
+  color: #065f46;
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.success-message a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #065f46;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.success-message a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.mint-mode-selector {
+  display: flex;
+  margin-bottom: 24px;
+  background: rgba(248, 249, 250, 0.8);
+  border-radius: 12px;
+  padding: 5px;
+  border: 1px solid rgba(110, 142, 251, 0.2);
+}
+
+.mint-mode-selector button {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #666;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.mint-mode-selector button.active {
+  color: #fff;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  font-weight: 600;
+  box-shadow: 0 0 15px rgba(110, 142, 251, 0.5);
+}
+
+.mint-mode-selector button:hover:not(.active) {
+  background: rgba(110, 142, 251, 0.1);
+}
+
+.batch-items-container {
+  margin-top: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.batch-items-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.batch-items-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+.batch-items-container::-webkit-scrollbar-thumb {
+  background: rgba(110, 142, 251, 0.3);
+  border-radius: 3px;
+}
+
+.batch-items-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(110, 142, 251, 0.5);
+}
+
+.batch-item {
+  border: 1px solid rgba(110, 142, 251, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  background: rgba(248, 249, 250, 0.8);
+  transition: all 0.3s;
+}
+
+.batch-item:hover {
+  box-shadow: 0 4px 15px rgba(110, 142, 251, 0.15);
+  transform: translateY(-2px);
+}
+
+.batch-item-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.batch-item-inputs .form-group {
+  flex: 1;
+  min-width: 150px;
+}
+
+.remove-batch-item {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d32f2f;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.remove-batch-item:hover {
+  background: rgba(220, 38, 38, 0.1);
+  transform: rotate(90deg);
+}
+
+.remove-batch-item:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.add-batch-item {
+  width: 100%;
+  padding: 12px;
+  background: rgba(110, 142, 251, 0.1);
+  border: 1px dashed rgba(110, 142, 251, 0.3);
+  border-radius: 8px;
+  color: #6e8efb;
+  cursor: pointer;
+  margin-top: 15px;
+  font-weight: 600;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.add-batch-item:hover {
+  background: rgba(110, 142, 251, 0.2);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .nft-minter-modal {
+    width: 95%;
+  }
+
+  .nft-minter-content-wrapper {
+    padding: 20px;
+  }
+
+  .batch-item-inputs {
+    flex-direction: column;
+  }
+
+  .nft-minter-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Token URI输入组样式 */
+.token-uri-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.token-uri-input-group input {
+  flex: 1;
+}
+
+.create-metadata-btn {
+  padding: 8px 12px;
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.create-metadata-btn:hover {
+  background-color: #40a9ff;
+}
+
+.config-notice {
+  margin-bottom: 16px;
+  padding: 12px;
+  background-color: #f0f7ff;
+  border-left: 4px solid #1890ff;
+  color: #1890ff;
+}
+
+/* 简化版UI样式 - 跟随全局主题 */
+.simple-ui {
+  color: var(--theme-text-primary, #f1f1f1);
+}
+
+.simple-ui h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--theme-border, rgba(255, 255, 255, 0.1));
+  color: var(--theme-text-primary, #f1f1f1);
+  font-weight: normal;
+}
+
+.simple-ui .form-group label {
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--theme-text-primary, #f1f1f1);
+}
+
+.simple-ui .form-group input,
+.simple-ui .form-group textarea {
+  background: var(--theme-input-bg, #111);
+  border: 1px solid var(--theme-border, #333);
+  color: var(--theme-input-text, #f1f1f1);
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.simple-ui .form-group input:focus,
+.simple-ui .form-group textarea:focus {
+  border-color: #6e8efb;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(110, 142, 251, 0.2);
+}
+
+.simple-ui .form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.simple-ui .required {
+  color: #ff4d4f;
+  margin-left: 2px;
+}
+
+/* 媒体上传容器 */
+.media-upload-container {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.upload-box {
+  border: 1px dashed var(--theme-border, #444);
+  border-radius: 8px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: var(--theme-input-bg, #111);
+  transition: all 0.3s ease;
+  width: 100%;
+  position: relative;
+}
+
+.upload-box:hover {
+  border-color: #6e8efb;
+  background: var(--theme-card-bg-hover, #1a1a1a);
+}
+
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--theme-text-muted, #888);
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.upload-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  color: var(--theme-text-muted, #888);
+}
+
+.media-description {
+  font-size: 0.85rem;
+  color: var(--theme-text-muted, #888);
+  margin-top: 0.5rem;
+}
+
+/* 媒体预览 */
+.media-preview {
+  width: 100%;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--theme-input-bg, #111);
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-preview-image {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+}
+
+.media-file-name {
+  padding: 1rem;
+  color: var(--theme-text-primary, #f1f1f1);
+}
+
+.remove-media-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 59, 48, 0.8);
+  color: #fff;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  transition: all 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.remove-media-btn:hover {
+  background-color: rgba(255, 59, 48, 1);
+  transform: scale(1.1);
+}
+
+/* 接收地址组样式 */
+.recipient-group {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--theme-border, rgba(255, 255, 255, 0.1));
+}
+
+/* 元数据状态显示 */
+.metadata-status {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background: var(--theme-card-bg-secondary, rgba(255, 255, 255, 0.05));
+  border-radius: 4px;
+  color: var(--theme-text-primary, #f1f1f1);
+}
+
+/* UI切换按钮 */
+.ui-toggle {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(110, 142, 251, 0.2);
+}
+
+.ui-toggle-btn {
+  background: none;
+  border: 1px solid rgba(110, 142, 251, 0.4);
+  color: #6e8efb;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.ui-toggle-btn:hover {
+  background-color: rgba(110, 142, 251, 0.1);
+}
+
+/* 确保所有form-group元素内的输入框具有一致的宽度 */
+.form-group textarea,
+.form-group input,
+.media-upload-container {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* NFTMinter 强制输入框样式 - 确保文字清晰可见 */
+.nft-minter-content-wrapper input:not([type="checkbox"]):not([type="radio"]),
+.nft-minter-content-wrapper textarea {
+  color: var(--theme-text-primary, #000) !important;
+  background: var(--theme-input-bg, #fff) !important;
+}
+
+/* 浅色主题下强制深色文字 */
+:root .nft-minter-content-wrapper input:not([type="checkbox"]):not([type="radio"]),
+:root .nft-minter-content-wrapper textarea {
+  color: #000 !important;
+}
+
+/* 深色主题下强制浅色文字 */
+[data-theme="dark"] .nft-minter-content-wrapper input:not([type="checkbox"]):not([type="radio"]),
+[data-theme="dark"] .nft-minter-content-wrapper textarea {
+  color: #fff !important;
+} 

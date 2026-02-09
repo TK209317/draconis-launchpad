@@ -1,0 +1,41 @@
+.theme-switcher {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.theme-switcher:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.theme-switcher:active {
+  transform: scale(0.95);
+}
+
+.theme-switcher svg {
+  transition: all 0.3s ease;
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+  .theme-switcher {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .theme-switcher svg {
+    width: 18px;
+    height: 18px;
+  }
+} 
