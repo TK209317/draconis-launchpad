@@ -1,13 +1,13 @@
 "use server";
 
 import "server-only";
-
 import { cookies } from "next/headers";
 import { db } from "../db";
 import { users } from "../db/schema";
 import { eq } from "drizzle-orm";
 import jwt from "jsonwebtoken";
 import { ethers } from "ethers";
+import crypto from 'crypto'; // 用來產生 nonce
 
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key-change-this";
 const JWT_EXPIRY = "7d"; // 7 days
@@ -153,27 +153,49 @@ export async function logout(): Promise<void> {
  * @param address - The wallet address
  * @returns The nonce or null if user doesn't exist
  */
-export async function getUserNonce(address: string): Promise<string | null> {
+
+
+export async function getUserNonce(address: string): Promise<string> {
+  const lowerAddress = address.toLowerCase();
+  console.log("[SERVER ACTION - getUserNonce] 開始執行，address:", lowerAddress);
+
+  // 確認環境變數（這部分你已經加了）
+  console.log("[SERVER ACTION] DATABASE_URL 是否存在:", !!process.env.DATABASE_URL);
+  console.log("[SERVER ACTION] DATABASE_URL 值長度:", process.env.DATABASE_URL?.length || 0);
+  console.log("[SERVER ACTION] DATABASE_URL 開頭:", process.env.DATABASE_URL?.substring(0, 30) || "無");
+
   try {
+    console.log("[getUserNonce] 嘗試查詢用戶");
     const user = await db
       .select()
       .from(users)
-      .where(eq(users.walletAddress, address.toLowerCase()))
+      .where(eq(users.walletAddress, lowerAddress))
       .limit(1);
 
-    if (user.length === 0) {
-      // Create new user with nonce
-      const nonce = await generateNonce();
-      await db.insert(users).values({
-        walletAddress: address.toLowerCase(),
-        nonce,
-      });
-      return nonce;
+    console.log("[getUserNonce] 查詢結果:", user);
+
+    if (user.length > 0 && user[0].nonce) {
+      console.log("[getUserNonce] 找到用戶，返回現有 nonce:", user[0].nonce);
+      return user[0].nonce;
     }
 
-    return user[0].nonce || (await generateNonce());
+    // 產生新 nonce（用 crypto 確保安全）
+    const nonce = crypto.randomUUID();
+    console.log("[getUserNonce] 產生新 nonce:", nonce);
+
+    console.log("[getUserNonce] 插入新用戶");
+    await db.insert(users).values({
+      walletAddress: lowerAddress,
+      nonce,
+      // 如果 schema 有其他必填欄位，如 createdAt，加這裡
+      // createdAt: new Date(),
+    });
+
+    console.log("[getUserNonce] 插入成功，返回新 nonce");
+    return nonce;
   } catch (error) {
-    console.error("Error getting user nonce:", error);
-    return null;
+    console.error("[getUserNonce] 完整錯誤:", error);
+    // 不要返回 null，而是拋錯，讓外層知道失敗原因
+    throw new Error(`無法取得或產生 nonce: ${error instanceof Error ? error.message : '未知錯誤'}`);
   }
 }
